@@ -1,0 +1,106 @@
+---
+title: Renovo Solutions Toolkit
+fabricator: true
+material-links:
+  - Typography: typography.html
+  - Elements: elements.html
+  - Components: components.html
+  - Cards: cards.html
+  - Interfaces: interfaces.html
+---
+
+<div class="measure-plus ta-c ml-a mr-a">
+
+	<h1>Renovo Solutions UI Toolkit</h1>
+
+	<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
+
+	<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
+
+	<h2>Usage</h2>
+
+	<p>Start by including the toolkit files in your page:</p>
+
+	<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
+
+	<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+	<h2>Toolkit Materials</h2>
+
+	<ul class="piped-list">
+		{{#material-links}}
+			{{#each this}}
+				<li>
+					<a href="{{this}}">{{@key}}</a>
+				</li>
+			{{/each}}
+		{{/material-links}}
+	</ul>
+
+</div>
+
+<h2 class="measure-plus ta-c ml-a mr-a">Color</h2>
+
+{{#each toolkit.colors}}
+	<div class="f-color-chips">
+	{{#each this}}
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">{{@key}}</div>
+			<div class="f-color-chip__color">{{this}}</div>
+		</div>
+	{{/each}}
+	</div>
+{{/each}}
+
+
+<div class="measure-plus ta-c ml-a mr-a mb">
+
+<h2>Typography</h2>
+
+<p>Renovo uses <strong>Lucida Grande</strong> as the primary typeface and <strong class="sans-alt">Helvetica</strong> as a secondary typeface. Typographic elements are composed using a <a href="http://www.modularscale.com/?1&em&1.333&web&text" target="_blank">Modular Scale</a> ratio of 4:3, or a <a href="http://en.wikipedia.org/wiki/Perfect_fourth" target="_blank">Perfect Fourth</a>. Character size, leading, measure, and spacing are all derived from this scale. Type is set in em units so that each typographic element scales proportionally.</p>
+
+<p>You can see a more in-depth example of typesetting in the <a href="/typography-sampler.html">typography sampler</a>.</p>
+
+
+<div class="cf">
+	<div class="col-s-12 col-m-6">
+		<p class="fz-xl"><strong class="d-b">20px</strong>Extra Large</p>
+		<p class="fz-l"><strong class="d-b">15px</strong>Large</p>
+		<p><strong class="d-b">14px</strong>Normal</p>
+		<p class="fz-s"><strong class="d-b">12px</strong>Small</p>
+		<p class="fz-xs"><strong class="d-b">11px</strong>Extra Small</p>
+	</div>
+	<div class="col-s-12 col-m-6">
+		<h1>h1<br>Heading Level 1</h1>
+		<h2>h2<br>Heading Level 2</h2>
+		<h3>h3<br>Heading Level 3</h3>
+		<h4>h4<br>Heading Level 4</h4>
+		<h5>h5<br>Heading Level 5</h5>
+		<h6>h6<br>Heading Level 6</h6>
+	</div>
+</div>
+
+<h2>Icon System</h2>
+
+{{#markdown}}
+The icon system is an [SVG sprite](https://css-tricks.com/svg-symbol-good-choice-icons/). You can include an icon using the following syntax:
+
+```markup
+<svg class="icon">
+	<use xlink:href="#icon-{name}" />
+</svg>
+```
+{{/markdown}}
+
+<h3>Icons</h3>
+
+{{#each toolkit.icons}}
+<div class="icon-preview">
+	<svg>
+		<use xlink:href="#{{this}}"	/>
+	</svg>
+	<div class="icon-preview__label">{{this}}</div>
+</div>
+{{/each}}
+
+</div>

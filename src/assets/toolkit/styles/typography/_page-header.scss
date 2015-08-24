@@ -1,0 +1,31 @@
+.page-header {
+	position: relative;
+
+	&__heading {
+		display: inline-block;
+		margin-top: ms(-4);
+		max-width: ms(10);
+
+		@include breakpoint($bp-l) {
+			max-width: ms(12);
+		}
+
+		& + p {
+			margin-top: -(ms(-2));
+		}
+	}
+
+	&__actions {
+		margin-bottom: ms(1);
+
+		@include breakpoint($bp-m) {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+		}
+
+		a + a {
+			margin-left: ms(0);
+		}
+	}
+}

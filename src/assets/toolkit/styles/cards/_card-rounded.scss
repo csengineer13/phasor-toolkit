@@ -1,0 +1,35 @@
+.card--rounded {
+	@include round-corners;
+
+	.photo-tile {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+	}
+
+	&.card-depth-1 .photo-tile,
+	&:not(.card-depth-2) .photo-tile {
+		@include breakpoint($bp-m) {
+			border-top-right-radius: 0;
+			border-bottom-left-radius: $border-radius;
+
+			&:before {
+				border-bottom-left-radius: $border-radius;
+			}
+		}
+	}
+
+	&.card-depth-2 .photo-tile {
+		@include breakpoint($bp-m) {
+			border-top-right-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+
+		@include breakpoint($bp-l) {
+			border-bottom-left-radius: $border-radius;
+
+			&:before {
+				border-bottom-left-radius: $border-radius;
+			}
+		}
+	}
+}

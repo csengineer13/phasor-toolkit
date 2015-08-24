@@ -1,0 +1,198 @@
+.search {
+	@include z-5;
+	background-color: rgba(color(brown), 0.95);
+	position: relative;
+
+	.is-searching & {
+		position: static;
+
+		@include breakpoint($bp-m) {
+			position: relative;
+		}
+	}
+
+	.header + & {
+		background-color: color(brown);
+	}
+
+	&__container {
+		@include clearfix;
+		@include z-10;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		padding: ms(0);
+		display: none;
+		margin: 0 auto;
+		max-width: $max-width;
+
+		@include breakpoint($bp-m) {
+			display: block;
+			position: static;
+			height: auto;
+			background-color: rgba(color(brown), 0.95);
+		}
+
+		@include breakpoint($bp-l) {
+			background-color: transparent;
+		}
+
+		.is-searching & {
+			display: block;
+			background-color: rgba(color(brown), 0.95);
+		}
+	}
+
+	&__scout {
+		$hSpace: (ms(0) * 4);
+
+		box-sizing: content-box;
+		width: calc(100% - #{$hSpace});
+		text-align: left;
+		padding: ms(0);
+		cursor: pointer;
+		color: color(grey);
+		position: relative;
+		background-clip: padding-box;
+		border: ms(0) solid rgba(color(brown), 0.95);
+
+		@include breakpoint($bp-m) {
+			display: none;
+		}
+
+		&:before {
+			@include round-corners;
+			content: ' ';
+			z-index: -1;
+			background-color: color(white);
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			position: absolute;
+		}
+
+		.icon {
+			position: relative;
+			bottom: 0.1em;
+			margin-right: ms(-4);
+
+			use {
+				fill: color(grey, 5);
+			}
+		}
+	}
+
+	&__modal-controls {
+		@include wide-kerning;
+		text-transform: uppercase;
+		text-align: center;
+		color: color(white);
+		padding-top: ms(1);
+		padding-bottom: ms(3);
+
+		@include breakpoint($bp-m) {
+			display: none;
+		}
+
+		span {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.icon {
+			cursor: pointer;
+			float: right;
+			position: absolute;
+			right: ms(1);
+			top: ms(1);
+		}
+	}
+
+	[class*='col-'] {
+		&:not(:last-child) {
+			@include breakpoint($bp-m) {
+				padding-right: ms(0);
+			}
+		}
+
+		&.search__text-input {
+			@include breakpoint($bp-m) {
+				padding-right: 0;
+			}
+
+			@include breakpoint($bp-l) {
+				padding-right: ms(0);
+			}
+		}
+	}
+
+	.col-s-12 {
+		margin-bottom: ms(0);
+
+		&:not(.search__text-input) {
+			@include breakpoint($bp-m) {
+				margin-bottom: 0;
+			}
+		}
+
+		@include breakpoint($bp-l) {
+			margin-bottom: 0;
+		}
+	}
+
+	&__text-input {
+		float: left;
+		text-align: left;
+
+		label {
+			@include fz-s;
+			@include wide-kerning;
+			text-transform: uppercase;
+			color: color(grey, 2);
+			margin-bottom: ms(-1);
+			display: inline-block;
+		}
+
+		input {
+			@include simple-text-input;
+			padding-left: 2.2em;
+
+			@include breakpoint($bp-m) {
+				padding-left: 3em;
+			}
+		}
+
+		.icon {
+			@include icon(ms(1));
+			position: absolute;
+			left: ms(-1);
+			top: calc(50% + 1px);
+			transform: translateY(-50%);
+
+			@include breakpoint($bp-m) {
+				top: 50%;
+			}
+
+			use {
+				fill: color(grey, 5);
+			}
+		}
+	}
+
+	.dropdown {
+		display: block;
+	}
+
+	&__form {
+		@include clearfix;
+
+		label {
+			@include breakpoint($bp-m) {
+				display: none;
+			}
+		}
+	}
+}

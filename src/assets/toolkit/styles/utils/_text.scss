@@ -1,0 +1,48 @@
+/**
+ * Iterate color map and dynamically create `.{color}` classes
+ */
+@each $color, $tones in $colors {
+	@each $tone, $bgcolor in $tones {
+
+		$className: if($tone == 0, #{$color}, #{$color}#{$tone});
+
+		.#{$className} {
+			&,
+			&:hover,
+			&:visited,
+			td:before {
+				color: $bgcolor !important;
+			}
+
+			svg use {
+				fill: $color;
+			}
+		}
+
+	}
+}
+
+
+
+// family
+.sans-alt {
+	@include sans-alt;
+}
+
+// size
+.fz-s {
+	@include fz-s;
+}
+
+.fz-l {
+	@include fz-l;
+}
+
+.group {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.td-u {
+	text-decoration: underline;
+}

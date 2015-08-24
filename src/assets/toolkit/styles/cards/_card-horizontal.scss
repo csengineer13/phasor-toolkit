@@ -1,0 +1,89 @@
+.card--horizontal {
+	min-height: 14em;
+
+	&.card-depth-1 {
+
+		> [class*='col-'] {
+			&:first-child {
+				> .photo-tile {
+					width: calc(100% + 2px);
+				}
+			}
+		}
+
+		@include breakpoint($bp-m) {
+			> [class*='col-'] {
+				&:first-child {
+					position: absolute;
+					left: 0;
+					height: 100%;
+
+					> .photo-tile {
+						position: absolute;
+						left: 0;
+						top: 0;
+						height: 100%;
+					}
+				}
+
+				&:last-child {
+					float: right;
+					border-left: 1px solid color(gray, 2);
+					min-height: 14em;
+				}
+			}
+		}
+	}
+
+	&.card-depth-2 {
+		> .col-l-6,
+		> .col-l-5 {
+			&:first-child {
+				@include breakpoint($bp-l) {
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100%;
+					width: 50%;
+
+					> .photo-tile {
+						position: absolute;
+						left: 0;
+						top: 0;
+						height: 100%;
+						width: 100%;
+					}
+				}
+			}
+
+			&:last-child {
+				@include breakpoint($bp-l) {
+					float: right;
+					border-left: 1px solid color(gray, 2);
+				}
+
+
+				> [class*='col-'] {
+					&:last-child {
+						@include breakpoint($bp-m) {
+							border-left: 1px solid color(gray, 2);
+						}
+
+						@include breakpoint($bp-l) {
+							border-top: 0;
+						}
+					}
+				}
+			}
+
+			[class*='bd-t-'] {
+				@include breakpoint($bp-l) {
+					&:first-child {
+						border-top: 0;
+					}
+				}
+			}
+		}
+	}
+}
+

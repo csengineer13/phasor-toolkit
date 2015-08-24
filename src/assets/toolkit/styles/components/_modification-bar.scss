@@ -1,0 +1,105 @@
+.mod-bar {
+	@include z-9;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+
+	.f-item-preview & {
+		position: static;
+	}
+
+	&.is-open {
+		> .mod-bar__body {
+			display: block;
+		}
+	}
+
+	&.is-closed {
+		> .mod-bar__body {
+			display: none;
+		}
+	}
+
+	&__header {
+		background-color: rgba(0, 0, 0, 0.6);
+		color: color(white);
+		padding: ms(-1) ms(5) ms(-1) ms(0);
+		position: relative;
+
+		a {
+			color: color(white);
+			text-decoration: underline;
+		}
+
+		.icon {
+			box-sizing: content-box;
+			position: absolute;
+			right: 0;
+			bottom: calc(50% - 1.5em);
+			cursor: pointer;
+			padding: ms(0) ms(2);
+		}
+	}
+
+	&__body {
+		@include clearfix;
+		background-color: color(white);
+	}
+
+	&__cell {
+		float: left;
+		position: relative;
+		padding: ms(1);
+		border-left: 1px solid color(gray, 2);
+
+		&:first-child {
+			border-left: 0;
+			padding-left: 7em;
+			box-shadow: inset 0 -1px 0 0 color(gray, 2);
+			width: 100%;
+
+			@include breakpoint($bp-l) {
+				box-shadow: none;
+				width: auto;
+				padding-left: ms(8) + 1em;
+			}
+		}
+
+		&:nth-child(2) {
+			width: 50%;
+			border-left: 0;
+
+			@include breakpoint($bp-l) {
+				width: auto;
+				border-left: 1px solid color(gray, 2);
+			}
+		}
+
+		&:last-child {
+			border-top: 1px solid color(gray, 2);
+			width: 100%;
+			border-left: 0;
+
+			@include breakpoint($bp-l) {
+				width: auto;
+				border-left: 1px solid color(gray, 2);
+				padding: ms(2) ms(1);
+			}
+		}
+	}
+
+	&__photo {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 6em;
+		background-size: cover;
+		background-position: center center;
+
+		@include breakpoint($bp-l) {
+			width: ms(8);
+		}
+	}
+}

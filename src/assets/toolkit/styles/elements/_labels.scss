@@ -1,0 +1,26 @@
+.label {
+	@include round-corners;
+	@include fz-s;
+	display: inline-block;
+	padding: ms(-5) ms(-2) ms(-4);
+	background-color: color(gray);
+	color: color(white);
+
+	&--error {
+		background-color: color(red);
+	}
+
+	&--warn {
+		background-color: color(tan, 2);
+		color: rgba(color(black), 0.6);
+	}
+
+	&--success {
+		background-color: color(green);
+		color: rgba(color(black), 0.6);
+	}
+
+	&--primary {
+		background-color: color(blue);
+	}
+}

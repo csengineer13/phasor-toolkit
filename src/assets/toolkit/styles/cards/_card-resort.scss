@@ -1,0 +1,19 @@
+.card--resort {
+	@include clearfix;
+	background-color: color(white);
+
+	.photo-tile {
+		@include breakpoint($bp-m) {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	> div:last-child {
+		@include breakpoint($bp-l) {
+			padding-left: ms(-2);
+		}
+	}
+}

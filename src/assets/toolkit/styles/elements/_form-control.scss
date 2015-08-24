@@ -1,0 +1,190 @@
+.form-group {
+	@include clearfix;
+	position: relative;
+
+	@media (max-width: $bp-m - 0.1) {
+		font-size: 16px;
+	}
+
+	label {
+		@include wide-kerning;
+		display: inline-block;
+		margin-bottom: ms(-1);
+		text-transform: uppercase;
+		color: color(gray);
+		padding-left: ms(0);
+		font-size: 75%;
+
+		@include breakpoint($bp-m) {
+			font-size: 90%;
+		}
+
+		+ .dropdown {
+			display: block;
+		}
+	}
+
+	&.is-error {
+		label {
+			color: color(red);
+		}
+	}
+
+	&__addon {
+		@include fz-l;
+		display: inline-block;
+		vertical-align: middle;
+		margin-right: ms(-4);
+
+		& + .form-control {
+			display: inline-block;
+			vertical-align: middle;
+			width: calc(100% - #{ms(2)});
+		}
+	}
+}
+
+.form-control {
+	display: block;
+	width: 100%;
+	border: 3px solid color(gray, 2);
+	padding: ms(0);
+	line-height: ms(1, 1);
+	-webkit-appearance: none;
+	border-radius: 0;
+	transition: border $timing $easing;
+
+	&:focus {
+		outline: none;
+		border-color: color(green, 1);
+	}
+
+	.is-error & {
+		border-color: color(red);
+		border-bottom: 0;
+	}
+
+	&-error {
+		padding: ms(0);
+		background-color: rgba(color(red), 0.1);
+		border: 3px solid color(red);
+		color: color(red);
+		border-top: 0;
+	}
+
+	&--alt {
+		@include round-corners;
+		border: 1px solid color(grey, 2);
+	}
+
+	&[readonly] {
+		color: color(gray);
+		background-color: color(gray, 3);
+
+		&:focus,
+		&:active {
+			border: 3px solid color(gray, 2);
+		}
+	}
+}
+
+::-webkit-input-placeholder {
+   color: color(gray, 1);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: color(gray, 1);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: color(gray, 1);
+}
+
+:-ms-input-placeholder {
+   color: color(gray, 1);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.date-input {
+	position: relative;
+
+	.icon {
+		@include z-1;
+		position: absolute;
+		top: ms(0);
+		left: ms(0);
+	}
+
+	.form-control {
+		width: auto;
+		max-width: 11em;
+		display: inline-block;
+		float: none;
+		padding-left: ms(4);
+	}
+}
+
+.scroll-box {
+	overflow-x: hidden;
+	overflow-y: auto;
+	max-height: 12em;
+	border: 1px solid color(gray, 2);
+	padding: ms(1);
+
+	p:first-child {
+		margin-top: 0;
+	}
+}
+
+.g-recaptcha {
+	transform: scale(0.84);
+	transform-origin: 0 0;
+
+	@include breakpoint($bp-s) {
+		transform: scale(1);
+	}
+}
+
+.split-conversion-control {
+
+	background-color: color(gray, 4);
+	padding: 30px;
+	border: 1px solid color(gray, 2);
+
+	@include breakpoint($bp-s) {
+		text-align: left;
+	}
+
+	label {
+		@include breakpoint($bp-s) {
+			display: block;
+		}
+	}
+
+	.form-control {
+		@include breakpoint($bp-s) {
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	&__math {
+		margin-top: ms(0);
+		margin-left: -1em;
+		text-align: center;
+
+		@include breakpoint($bp-s) {
+			display: inline-block;
+			margin-left: 0;
+		}
+	}
+}
+
+input[type="search"]::-webkit-search-decoration {
+  display: none;
+}

@@ -1,0 +1,22 @@
+.hidden-s {
+	display: none;
+
+	@include breakpoint($bp-m) {
+		display: block;
+	}
+}
+
+.hidden-s--ib {
+	display: none;
+
+	@include breakpoint($bp-m) {
+		display: inline-block;
+	}
+}
+
+
+.hidden--l {
+	@include breakpoint($bp-l) {
+		display: none;
+	}
+}

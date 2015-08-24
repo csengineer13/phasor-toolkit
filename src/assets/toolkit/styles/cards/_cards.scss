@@ -1,0 +1,258 @@
+.card {
+	@include clearfix;
+	background-color: color(white);
+	box-shadow: inset 0 0 0 1px color(gray, 2);
+	position: relative;
+	overflow: hidden;
+
+	.photo-tile {
+		height: 12em;
+	}
+
+	&__header {
+		color: color(white);
+		background-color: color(black);
+		text-align: center;
+		padding: ms(-1);
+	}
+
+	&__heading {
+		font-size: 1em;
+		margin-top: 0;
+		margin-bottom: ms(-2);
+
+		@include breakpoint($bp-m) {
+			font-size: ms(1) + ms(-6);
+			margin-top: ms(-4);
+			margin-bottom: ms(-4);
+		}
+	}
+
+	&__sub-heading {
+		@include fz-s;
+
+		@include breakpoint($bp-m) {
+			font-size: 1em;
+		}
+	}
+
+	&__cell {
+		@include clearfix;
+		padding: ms(1);
+
+		&:nth-child(3) {
+			@include breakpoint($bp-l) {
+				border-bottom: 0;
+			}
+		}
+
+		&--center {
+			> div {
+				&:first-child {
+					margin-bottom: ms(1);
+					text-align: center;
+
+					@include breakpoint($bp-m) {
+						text-align: left;
+						margin-bottom: 0;
+					}
+				}
+			}
+
+			@include breakpoint($bp-m) {
+				@include vertical-center;
+			}
+		}
+
+		.card &--flex {
+			display: flex;
+			align-items: center;
+			align-content: stretch;
+
+			> div {
+				width: 100%;
+			}
+
+			&.col-m-6 {
+				@include breakpoint($bp-m) {
+					position: absolute;
+					right: 0;
+					height: 100%;
+				}
+			}
+
+			&.col-l-5 {
+				@include breakpoint($bp-l) {
+					position: absolute;
+					right: 0;
+					height: 100%;
+				}
+			}
+		}
+	}
+
+	.row {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	[class*='col-'] {
+		& > & {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	p {
+		max-width: $measure-plus;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	.button {
+		display: block;
+
+		@include breakpoint($bp-m) {
+			display: inline-block;
+		}
+	}
+}
+
+
+// horizontal cards
+.card__points {
+	text-align: right;
+	padding-top: ms(0);
+	padding-right: ms(1);
+
+	@include breakpoint($bp-m) {
+		text-align: center;
+		padding-left: ms(0);
+		padding-right: ms(0);
+		padding-top: ms(0);
+		padding-bottom: ms(0);
+		transform: translateY(-50%);
+		top: 50%;
+		position: absolute;
+		right: 0;
+	}
+
+	.points {
+		font-size: ms(2);
+
+		@include breakpoint($bp-m) {
+			font-size: ms(4);
+		}
+	}
+
+	.subheading {
+		@include fz-xs;
+
+		@include breakpoint($bp-m) {
+			@include fz-s;
+		}
+	}
+}
+
+.card__photo-container {
+	@include breakpoint($bp-m) {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+
+		> .photo-tile {
+			position: absolute;
+			top: 0;
+			width: calc(100% + 1px);
+			height: calc(100% + 1px);
+		}
+	}
+}
+
+.card-alert {
+	@include z-1;
+	position: relative;
+	margin-top: -2px;
+	padding: ms(-2) ms(0);
+	background-color: color(red, 1);
+	border-color: color(red);
+
+	&,
+	p {
+		color: color(red);
+	}
+}
+
+.elite-card {
+	background-color: color(white);
+	box-shadow: inset 0 0 0 1px color(gray, 2);
+	padding: ms(1);
+	text-align: center;
+
+	@include breakpoint($bp-l) {
+		@include clearfix;
+		text-align: left;
+	}
+
+	> img {
+		@include breakpoint($bp-l) {
+			float: left;
+			margin-right: ms(3);
+		}
+
+		@include breakpoint($bp-l) {
+			margin-right: ms(5);
+		}
+	}
+
+	> p {
+		margin-bottom: 0;
+
+		@include breakpoint($bp-l) {
+			display: inline-block;
+			vertical-align: middle;
+			margin-top: ms(-2);
+		}
+
+		> a {
+			display: block;
+		}
+	}
+}
+
+
+.card--notification {
+	.col-m-4 {
+		@include breakpoint($bp-m) {
+			padding-left: calc(#{ms(0)*2} + 1px);
+		}
+	}
+}
+
+.is-truncated {
+	max-height: (1em * 1.7) * 2;
+	overflow: hidden;
+
+	> a {
+		position: absolute;
+		right: ms(0);
+		top: (1em * 1.7);
+		background-color: color(white);
+
+		&:before {
+			content: '...';
+			position: absolute;
+			color: color(gray);
+			box-sizing: content-box;
+			width: 1em;
+			padding: 0 0.5em 0 1.5em;
+			left: -3em;
+			background-color: color(white);
+			background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 1em);
+		}
+	}
+}

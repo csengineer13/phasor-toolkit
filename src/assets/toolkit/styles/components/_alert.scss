@@ -1,0 +1,120 @@
+.alert {
+	@include clearfix;
+	padding: ms(0);
+	position: relative;
+	border-width: 1px;
+	border-style: solid;
+
+	&--warning {
+		background-color: color(tan);
+		border-color: color(tan, 1);
+	}
+
+	&--error {
+		background-color: color(red, 1);
+		border-color: rgba(color(red, 2), 0.2);
+
+		&,
+		p,
+		a {
+			color: color(red);
+		}
+
+		.alert__icon {
+			use {
+				fill: color(red);
+			}
+		}
+	}
+
+	&--success {
+		background-color: rgba(color(green, 1), 0.1);
+		border-color: rgba(color(green, 1), 0.2);
+
+		.alert__icon {
+			use {
+				fill: color(green, 1);
+			}
+		}
+	}
+
+	&--condensed {
+		padding: ms(-1) ms(5) ms(-1) ms(-1);
+
+		&,
+		p,
+		a {
+			margin: 0;
+		}
+
+		a {
+			text-decoration: underline;
+		}
+	}
+
+	&__icon {
+		position: absolute;
+		top: ms(0);
+		left: ms(0);
+		text-align: center;
+
+		.icon {
+			@include icon(ms(2));
+			margin-top: -0.1em;
+
+			@include breakpoint($bp-l) {
+				@include icon(ms(2));
+			}
+		}
+
+		use {
+			fill: color(tan, 2);
+		}
+	}
+
+	&__details {
+		float: left;
+
+		@include breakpoint($bp-m) {
+			@include span-columns(11);
+		}
+
+		> *:first-child {
+			padding-left: ms(3, 1rem);
+
+			@include breakpoint($bp-l) {
+				padding-left: ms(4, 1rem);
+			}
+		}
+
+		p:first-child {
+			margin-top: 0;
+			padding-left: ms(3, 1rem);
+		}
+	}
+
+	h5 {
+		margin-top: ms(-11);
+	}
+
+	p {
+		line-height: ms(2, 1);
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+.alert__close {
+	position: absolute;
+	right: ms(0);
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+
+	use {
+		fill: darken(color(red), 10%);
+	}
+}

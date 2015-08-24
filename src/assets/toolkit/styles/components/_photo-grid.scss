@@ -1,0 +1,161 @@
+.photo-grid {
+	&__row {
+		@include clearfix;
+		position: relative;
+	}
+
+	&__item {
+		@include darken-overlay(70%);
+		display: block;
+		position: relative;
+		background-color: color(brown);
+		background-size: cover;
+		background-position: center center;
+		height: ms(10);
+		overflow: hidden;
+
+		@include breakpoint($bp-m) {
+			float: left;
+			height: 0;
+		}
+
+		&:hover {
+			.photo-details {
+				@include breakpoint($bp-m) {
+					transform: translateY(0);
+					opacity: 1;
+					animation-name: photo-details-in;
+					animation-duration: $timing * 3;
+				}
+			}
+		}
+	}
+
+	.photo-details {
+		@include breakpoint($bp-m) {
+			transform: translateY(5em);
+			opacity: 0;
+			animation-name: photo-details-out;
+			animation-duration: $timing * 3;
+		}
+	}
+}
+
+@keyframes photo-details-in {
+	0% {
+		transform: translateY(5em);
+		opacity: 0;
+	}
+	50% {
+		transform: translateY(0);
+	}
+	100% {
+
+		opacity: 1;
+	}
+}
+
+@keyframes photo-details-out {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	75% {
+		transform: translateY(5em);
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.photo-grid--golden {
+	.photo-grid__item {
+		@include breakpoint($bp-m) {
+			&:nth-child(1) {
+				width: 50%;
+				padding-bottom: ms(-1, 50%, 1.618);
+			}
+
+			&:nth-child(2) {
+				width: 25%;
+				clear: left;
+				padding-bottom: ms(-2, 50%, 1.618);
+			}
+
+			&:nth-child(3) {
+				width: 25%;
+				padding-bottom: ms(-2, 50%, 1.618);
+			}
+
+			&:nth-child(4) {
+				width: 50%;
+				padding-bottom: 50%;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+		}
+	}
+}
+
+
+.photo-grid--quad {
+	.photo-grid__row {
+		@include breakpoint($bp-m) {
+			max-width: ms(15);
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+
+	.photo-grid__item {
+		width: 50%;
+		height: 0;
+		padding-bottom: 50%;
+		float: left;
+		position: relative;
+
+		&:before {
+			@include z-0;
+			content: ' ';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(color(green, 1), 0.9);
+			opacity: 0;
+			transition: opacity $timing $easing;
+		}
+
+		&:hover {
+			&:before,
+			.photo-grid__item-content {
+				opacity: 1;
+			}
+		}
+
+		@include breakpoint($bp-m) {
+			width: 25%;
+			padding-bottom: 25%;
+		}
+	}
+
+	.photo-grid__item-content {
+		@include z-1;
+		position: absolute;
+		bottom: ms(1);
+		left: ms(1);
+		color: color(white);
+		opacity: 0;
+		transition: opacity $timing $easing;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		.icon {
+			margin-right: ms(-3);
+		}
+	}
+}

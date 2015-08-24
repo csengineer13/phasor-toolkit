@@ -1,0 +1,42 @@
+/**
+ * Iterate color map and dynamically create `.bd-{t/b}-{color}` classes
+ */
+@each $color, $tones in $colors {
+	@each $tone, $bgcolor in $tones {
+
+		$className: if($tone == 0, #{$color}, #{$color}#{$tone});
+
+		.bd-b-#{$className} {
+			border-bottom: 1px solid $bgcolor;
+		}
+
+		.bd-t-#{$className} {
+			border-top: 1px solid $bgcolor;
+		}
+
+		.bd-l-#{$className} {
+			border-left: 1px solid $bgcolor;
+		}
+
+		.bd-r-#{$className} {
+			border-right: 1px solid $bgcolor;
+		}
+
+	}
+}
+
+.bd-t-0 {
+	border-top: 0 !important;
+}
+
+.bd-b-0 {
+	border-bottom: 0 !important;
+}
+
+.bd-r-0 {
+	border-right: 0 !important;
+}
+
+.bd-l-0 {
+	border-left: 0 !important;
+}

@@ -1,0 +1,44 @@
+---
+fabricator: true
+---
+
+<h1 data-f-toggle="labels">Interfaces</h1>
+
+{{#each views}}
+
+	<h2>{{name}}</h2>
+
+	<table class="table-compress table--fixed mb-xl">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each items}}
+				<tr>
+					<td data-label="Name">
+						<a href="{{@../key}}/{{@key}}.html">{{name}}</a>
+					</td>
+					<td data-label="Status">
+						{{#is  data.status "Testing" }}
+							<span class="label label--warn">{{data.status}}</span>
+						{{/is}}
+						{{#is  data.status "In Development" }}
+							<span class="label label--error">{{data.status}}</span>
+						{{/is}}
+						{{#is  data.status "Integration" }}
+							<span class="label label--primary">{{data.status}}</span>
+						{{/is}}
+						{{#is  data.status "UAT" }}
+							<span class="label label--success">{{data.status}}</span>
+						{{/is}}
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+
+	</table>
+
+{{/each}}

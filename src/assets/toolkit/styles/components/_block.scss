@@ -1,0 +1,80 @@
+.block {
+	@include clearfix;
+	background-color: color(white);
+	padding: ms(1) ms(0);
+	border: 1px solid color(gray, 2);
+
+	@include breakpoint($bp-l) {
+		padding: ms(2);
+	}
+}
+
+.block__thumbnail {
+	height: ms(7);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	position: relative;
+
+}
+
+.block__thumbnail-details {
+	color: color(white);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: ms(-1);
+
+	use {
+		fill: color(white);
+	}
+}
+
+.block__details {
+	padding-top: ms(0);
+
+	@include breakpoint($bp-m) {
+		padding-top: 0;
+		padding-left: 1em;
+	}
+
+	p {
+		line-height: ms(2, 1);
+	}
+}
+
+.block__action {
+	float: right;
+	width: 100%;
+
+
+	.button {
+		width: 100%;
+
+		@include breakpoint($bp-m) {
+			width: auto;
+		}
+	}
+}
+
+.points-block-group {
+	text-align: center;
+	margin-bottom: ms(0);
+
+	@include breakpoint($bp-m) {
+		text-align: left;
+		margin-bottom: 0;
+	}
+}
+
+.points-block {
+	text-align: center;
+	display: inline-block;
+
+	.subheading {
+		max-width: ms(8);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

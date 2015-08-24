@@ -1,0 +1,115 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	background-color: color(gray, 3);
+}
+
+.container {
+	overflow-x: hidden;
+
+	.modal-open &,
+	.is-searching & {
+		overflow: hidden;
+		position: fixed;
+
+		.main {
+			@include z-9;
+		}
+
+		.search {
+			@include z-10;
+		}
+
+		@include breakpoint($bp-m) {
+			overflow: auto;
+			position: static;
+
+			&:before {
+				display: none;
+			}
+		}
+	}
+
+	.is-navigating & {
+		overflow: hidden;
+		position: fixed;
+
+		@include breakpoint($bp-l) {
+			overflow: auto;
+			position: static;
+		}
+	}
+}
+
+.maw {
+	max-width: $max-width;
+}
+
+.maw-n {
+	max-width: $max-width-narrow;
+}
+
+.main {
+	@include z-2;
+	position: relative;
+	padding-top: ms(3);
+	padding-bottom: ms(3);
+
+	@include breakpoint($bp-l) {
+		padding-top: ms(4);
+		padding-bottom: ms(5);
+	}
+
+	&--pull-up {
+		padding-top: 0;
+	}
+
+	&--island {
+		@include clearfix;
+		padding-top: ms(4);
+		padding-bottom: ms(4);
+
+		@include breakpoint($bp-l) {
+			padding-top: ms(6);
+			padding-bottom: ms(6);
+		}
+
+		&,
+		&:nth-child(n) {
+			float: none;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	}
+}
+
+.accommodation-filters {
+	.form-group {
+		margin-bottom: ms(0);
+
+		@include breakpoint($bp-m) {
+			position: absolute;
+			top: ms(0);
+			right: 0;
+		}
+	}
+}
+
+.section-controls {
+	margin-bottom: ms(1);
+
+	@include breakpoint($bp-m) {
+		position: absolute;
+		right: 0;
+		bottom: ms(0);
+		margin-bottom: 0;
+	}
+}

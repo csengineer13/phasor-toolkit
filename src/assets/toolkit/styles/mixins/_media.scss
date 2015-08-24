@@ -1,0 +1,150 @@
+// use with viewbox="" and preserveAspectRatio="xMinYMin meet"
+@mixin svg-container {
+	position: relative;
+	display: inline-block;
+	overflow: hidden;
+	width: 100%;
+	padding-bottom: 100%;
+	vertical-align: middle;
+
+	svg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: inline-block;
+	}
+}
+
+
+@mixin instrinsic-wrapper {
+	position: relative;
+	height: 0;
+	padding-bottom: 56.25%;
+	text-align: center;
+
+	div,
+	embed,
+	object,
+	iframe {
+		position: absolute !important;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+}
+
+
+@mixin svg {
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+
+@mixin icon($size) {
+	@include svg;
+	width: $size;
+	height: $size;
+
+	&,
+	&:not(:root) {
+		overflow: visible;
+	}
+}
+
+.icon {
+	@include icon(ms(1, 1rem));
+	display: inline-block;
+	vertical-align: middle;
+
+	&.is-valid {
+		use {
+			fill: color(green) !important;
+		}
+	}
+
+	&--s {
+		@include icon(ms(0, 1rem));
+	}
+
+	&--l {
+		@include icon(ms(3, 1rem));
+	}
+
+	&--va {
+		margin-top: -(ms(-5));
+	}
+
+	h3 & {
+		margin-top: -0.2em;
+	}
+
+	use {
+		fill: color(grey, 2);
+	}
+
+	& + span {
+		vertical-align: middle;
+	}
+}
+
+.icon-preview {
+	display: inline-block;
+	margin: ms(0) ms(0) ms(3);
+	text-align: center;
+
+	svg {
+		@include icon(ms(3));
+		margin-bottom: ms(-1);
+
+		use {
+			fill: color(grey, 2);
+		}
+	}
+
+	&__label {
+		font-size: (12/14) + em;
+		color: color(grey);
+	}
+}
+
+@mixin ir {
+	text-indent: 110%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.ir {
+	@include ir;
+}
+
+.circle-icon {
+	background-color: color(grey, 1);
+	font-size: ms(-1);
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	height: ms(4);
+	padding-top: 1em;
+	width: ms(4);
+	line-height: 1;
+	border-radius: 50%;
+
+	&.is-active {
+		background-color: color(green, 1);
+	}
+
+	& + & {
+		margin-left: ms(-3);
+	}
+
+	.icon {
+		@include icon(ms(1));
+
+		use {
+			fill: color(white);
+		}
+	}
+}

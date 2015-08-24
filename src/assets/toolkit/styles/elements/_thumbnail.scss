@@ -1,0 +1,15 @@
+.thumbnail {
+	&__image {
+		display: inline-block;
+		vertical-align: middle;
+		width: 30%;
+		max-width: ms(7);
+		margin-right: ms(-2);
+	}
+
+	&__text {
+		display: inline-block;
+		vertical-align: middle;
+		width: 70%;
+	}
+}

@@ -1,0 +1,72 @@
+.accordion {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: color(white);
+
+
+	.card & {
+		box-shadow: inset 0 0 0 1px color(gray, 1);
+		padding-bottom: ms(0);
+
+		.accordion__content {
+			padding: 0 ms(0);
+		}
+	}
+
+	> li {
+		margin-bottom: 0;
+
+		&.is-active {
+			> .accordion__content {
+				display: block;
+			}
+
+			> a {
+				background-color: color(green, 1);
+				color: color(white);
+			}
+
+			> [data-toggle="accordion"] {
+				@include caret-after(color(white), block);
+			}
+		}
+
+		> a {
+			display: block;
+			padding: ms(0) ms(2);
+			color: color(black);
+		}
+
+		> [data-toggle="accordion"] {
+			@include caret-after(color(grey), block);
+		}
+
+		> .accordion__content {
+			display: none;
+		}
+
+		> ul {
+			list-style-type: none;
+			background-color: color(gray, 4);
+			margin: 0;
+			padding: 0;
+
+			> li {
+				margin-bottom: 0;
+
+				&.is-active {
+					> a {
+						color: color(black);
+					}
+				}
+
+				> a {
+					display: block;
+					padding: ms(-1) ms(3);
+					color: color(grey);
+				}
+			}
+		}
+	}
+}

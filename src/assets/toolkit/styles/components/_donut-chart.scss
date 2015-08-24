@@ -1,0 +1,77 @@
+.donut-chart {
+	height: 15em;
+	width: 15em;
+	position: relative;
+
+	&__summary {
+		@include z-1;
+		position: absolute;
+		text-align: center;
+		top: 50%;
+		left: 50%;
+	}
+
+	&__title {
+		@include fz-s(true);
+		line-height: 1.3;
+		margin: 0;
+		opacity: 0;
+		position: absolute;
+		top: 70%;
+		margin-top: 7%;
+		padding: 0 ms(0);
+		transition: all $timing $easing 150ms;
+
+		.is-loaded & {
+			opacity: 1;
+			top: 50%;
+		}
+	}
+
+	&__total {
+		@include sans-alt;
+		@include fz-xxl(true);
+		font-weight: bold;
+		color: color(black);
+		margin: 0;
+		width: 100%;
+		opacity: 0;
+		position: absolute;
+		top: 70%;
+		margin-top: -32%;
+		transition: all $timing $easing 100ms;
+
+		.is-loaded & {
+			opacity: 1;
+			top: 50%;
+		}
+	}
+}
+
+
+// donut chart + legend
+.points-chart {
+	position: relative;
+	padding-top: ms(0);
+
+	.donut-chart {
+		margin-left: auto;
+		margin-right: auto;
+
+		@include breakpoint ($bp-l) {
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	}
+
+	&__legend {
+		@include breakpoint($bp-l) {
+			padding-left: 16em;
+		}
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+}

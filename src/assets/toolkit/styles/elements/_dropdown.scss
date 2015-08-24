@@ -1,0 +1,118 @@
+.dropdown {
+	position: relative;
+	text-align: left;
+	display: inline-block;
+
+	&--stretch {
+		display: block;
+		width: 100%;
+	}
+
+	&__label {
+		@include wide-kerning;
+		display: inline-block;
+		margin-bottom: ms(-1);
+		text-transform: uppercase;
+		color: color(gray);
+		padding-left: ms(0);
+	}
+
+	&__button {
+		@include simple-text-input;
+		cursor: pointer;
+		color: color(grey);
+		line-height: 0.7;
+
+		@include breakpoint($bp-m) {
+			line-height: 1;
+		}
+
+		&.is-touched {
+			&,
+			& a {
+				color: color(black);
+			}
+		}
+
+		&.form-control {
+			height: auto;
+			min-height: 52px;
+		}
+
+		.dropdown--frosted & {
+			background-color: rgba(#fff, 0.2);
+			box-shadow: none;
+
+			&,
+			& a {
+				color: color(white);
+			}
+
+			&.is-touched {
+				color: color(white);
+			}
+		}
+
+		.icon {
+			@include icon(ms(1));
+			margin-top: -1px;
+
+			+ a {
+				margin-left: ms(-4);
+			}
+		}
+	}
+
+	&__menu {
+		@include z-1;
+		@include shadowbox;
+		margin: 0;
+		padding: ms(-2) 0;
+		list-style-type: none;
+		position: absolute;
+		top: calc(100% + #{ms(-4)});
+		min-width: 100%;
+		display: none;
+		white-space: nowrap;
+		max-height: ms(10);
+		overflow: auto;
+		background-color: color(white);
+
+		.is-active > & {
+			display: block;
+		}
+
+		li {
+			margin-bottom: 0;
+			position: relative;
+
+			a {
+				display: block;
+				padding: ms(-1) ms(0);
+				color: color(black);
+				line-height: 1;
+
+				&:hover {
+					background-color: color(green, 1);
+					color: color(white);
+					text-decoration: none;
+				}
+			}
+
+			.icon {
+				position: absolute;
+				left: ms(0);
+				top: 0.65em;
+
+				& + a {
+					padding-left: ms(4);
+				}
+			}
+		}
+	}
+}
+
+.caret-after,
+.dropdown__button {
+	@include caret-after;
+}

@@ -1,0 +1,16 @@
+blockquote {
+	text-align: center;
+	margin: ms(6) auto;
+
+	@include breakpoint($bp-l) {
+		float: right;
+		max-width: 22em;
+		margin: ms(6) 0 ms(6) ms(4);
+	}
+
+	p {
+		@include fz-xl;
+		line-height: 1.4;
+		color: color(black);
+	}
+}

@@ -1,0 +1,20 @@
+.credit-card {
+	width: ms(4);
+	display: inline-block;
+
+	&--s {
+		width: ms(2);
+	}
+
+	& + & {
+		margin-left: ms(-3);
+	}
+}
+
+.form-credit-cards {
+	text-align: center;
+
+	@include breakpoint($bp-m) {
+		text-align: right;
+	}
+}

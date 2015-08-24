@@ -1,0 +1,94 @@
+.footer {
+	background-color: color(brown);
+	background-size: cover;
+	background-position: center top;
+	padding-top: ms(3);
+	padding-bottom: ms(1);
+	color: color(white);
+
+	@include breakpoint($bp-l) {
+		padding-top: ms(4);
+	}
+
+	.footer-disclosure {
+		p {
+			@include fz-xs;
+			color: rgba(color(white), 0.4);
+		}
+	}
+
+	.link-list {
+		display: none;
+
+		@include breakpoint($bp-l) {
+			display: block;
+			margin-top: ms(-2);
+		}
+
+		a {
+			color: color(white);
+		}
+	}
+
+	.footer-list-heading {
+		@include fz-s;
+		padding-right: ms(1);
+		margin-bottom: ms(3);
+		display: inline-block;
+		color: rgba(color(white), 0.5);
+
+		@include breakpoint($bp-m) {
+			font-size: 1em;
+		}
+
+		@include breakpoint($bp-l) {
+			@include wide-kerning;
+			font-size: 1em;
+			margin-bottom: ms(0);
+			text-transform: uppercase;
+			padding-right: ms(0);
+		}
+	}
+
+	.dropdown {
+		@include breakpoint($bp-l) {
+			float: right;
+		}
+
+		&__button {
+			background-color: rgba(color(brown, 1), 0.1);
+
+			a {
+				color: white;
+			}
+		}
+	}
+
+	.footer-logos {
+		@include clearfix;
+
+		> a {
+			display: inline-block;
+			vertical-align: middle;
+			padding: ms(0) 1%;
+			width: percentage(1/8);
+
+			@include breakpoint($bp-m) {
+				width: percentage(1/10);
+			}
+
+			@include breakpoint($bp-l) {
+				width: percentage(1/13) - 0.5%;
+			}
+
+			> img {
+				max-width: 100%;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+
+		border-top: 1px solid rgba(color(white), 0.1);
+		padding-top: 20px;
+	}
+}

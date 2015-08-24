@@ -1,0 +1,38 @@
+colors:
+  1:
+    color(blue): "#0E5E8F"
+    color(blue, 1): "#3DC7D3"
+    color(green): "#5EC25A"
+    color(green, 1): "#C5EBC3"
+    color(red): "#8F0E5E"
+  2:
+    color(orange): "#f99d31"
+    color(orange, 1): "#ffe894"
+    color(brown): "#472a2b"
+    color(brown, 1): "#bbb0a6"
+    color(tan): "#ECDCB0"
+  3:
+    color(gray): "#808080"
+    color(gray, 1): "#cfd4d8"
+    color(gray, 2): "#b3b3b3"
+    color(white): "#fff"
+    color(black): "#333333"
+    color(black, 1): "#515151"
+icons:
+  - icon-alert
+  - icon-arrow-down
+  - icon-arrow-left
+  - icon-arrow-right
+  - icon-arrow-up
+  - icon-calendar
+  - icon-check-circle
+  - icon-help
+  - icon-info
+  - icon-location
+  - icon-mail
+  - icon-none
+  - icon-print
+  - icon-recommendation
+  - icon-search
+  - icon-x-circle
+  - icon-x

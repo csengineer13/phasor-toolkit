@@ -1,0 +1,40 @@
+.breadcrumbs {
+	@include clearfix;
+	list-style-type: none;
+	padding-left: 0;
+	margin: 0;
+
+	li {
+		display: block;
+		float: left;
+		margin-bottom: 0;
+		margin-right: ms(1);
+		line-height: 1;
+		position: relative;
+
+		&:after {
+			content: ' ';
+			display: block;
+			position: absolute;
+			right: calc(#{-(ms(1)/2)} - 1px);
+			top: calc(#{(ms(1))} - 12px);
+			height: 2px;
+			width: 2px;
+			border-radius: 100%;
+			background-color: color(gray);
+			color: color(gray);
+			vertical-align: middle;
+		}
+
+		+ li {
+
+			&:after {
+				display: none;
+			}
+		}
+
+		a {
+			color: color(gray);
+		}
+	}
+}

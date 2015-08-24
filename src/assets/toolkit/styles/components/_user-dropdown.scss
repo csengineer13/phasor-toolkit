@@ -1,0 +1,209 @@
+.user-dropdown {
+	text-align: center;
+	position: relative;
+
+	@include breakpoint($bp-l) {
+		text-align: left;
+		float: left;
+
+		.header & {
+			text-align: right;
+		}
+
+		[class*="--dark"] & {
+			color: color(white);
+		}
+
+		.is-open & {
+			color: color(grey);
+		}
+	}
+
+	&.is-active {
+		.user-dropdown__content {
+			max-height: 9999em;
+			opacity: 1;
+			transform: translateY(0);
+			top: 6em;
+			transition: opacity ($timing / 1.333), transform ($timing / 1.333), max-height 0s, top 0s;
+		}
+	}
+
+	&__button {
+		@include clearfix;
+		padding: 6em ms(0) 2em;
+		background-color: color(gray, 3);
+		display: block;
+
+		@include breakpoint($bp-l) {
+			@include caret-after;
+			background-color: transparent;
+			cursor: pointer;
+			padding-top: 2.6em;
+
+			&:after {
+				top: calc(50% + #{ms(-7)});
+			}
+		}
+
+		@include breakpoint($bp-xl) {
+			&:after {
+				display: none;
+			}
+		}
+	}
+
+	&__avatar {
+		width: ms(4);
+		height: ms(4);
+		position: absolute;
+		top: ms(2);
+		left: 50%;
+		transform: translateX(-50%);
+
+		@include breakpoint($bp-l) {
+			margin-bottom: 0;
+			float: left;
+			width: ms(3);
+			height: ms(3);
+			position: relative;
+			top: 0;
+			float: left;
+			left: 0;
+			transform: none;
+		}
+
+		> img {
+			border-radius: 50%;
+			max-width: 100%;
+			display: block;
+		}
+	}
+
+	&__greeting {
+		color: color(black);
+
+		@include breakpoint($bp-l) {
+			display: none;
+		}
+
+		@include breakpoint($bp-xl) {
+			@include caret-after;
+			display: block;
+			position: relative;
+			top: 0.6em;
+			float: left;
+			overflow: hidden;
+			white-space: nowrap;
+			max-width: 14em;
+			text-overflow: ellipsis;
+		}
+	}
+
+	&__content {
+		text-align: left;
+		background-color: color(gray, 3);
+		color: color(black);
+
+		@include breakpoint($bp-l) {
+			@include shadowbox;
+			@include speech-bubble-tail(true, 18.7em);
+			position: absolute;
+			width: ms(11);
+			left: 0;
+			opacity: 0;
+			max-height: 0;
+			transform: translateY(-1em);
+			top: -(ms(12));
+			transition: opacity ($timing / 1.333), transform ($timing / 1.333), max-height 0s 150ms, top 0s ($timing / 1.333);
+
+			.header & {
+				left: auto;
+				right: 0;
+
+				&:after {
+					border-color: color(gray, 3) transparent;
+				}
+			}
+		}
+
+		@include breakpoint($bp-xl) {
+			@include speech-bubble-tail(true, 9.5em);
+			position: absolute;
+		}
+
+		ul {
+			padding-left: 0;
+			margin: 0;
+			list-style-type: none;
+
+			li {
+				margin-bottom: 0;
+			}
+		}
+
+		> ul {
+			> li {
+
+				&:last-child {
+					a {
+						border-bottom-right-radius: 3px;
+						border-bottom-left-radius: 3px;
+					}
+				}
+
+				> a {
+					padding: ms(0);
+					color: color(black);
+					background-color: color(white);
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.points-overview {
+	padding: ms(0);
+	border-bottom: 1px solid color(gray, 1);
+
+	&__heading {
+		@include fz-l;
+		font-weight: 700;
+		margin-bottom: ms(-2);
+	}
+
+	> ul {
+
+		> li {
+			@include clearfix;
+			@include fz-s;
+			padding: ms(-2) 0;
+
+			> a {
+				color: color(blue);
+				background-color: transparent;
+				padding: 0;
+			}
+
+			a:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+
+.badge {
+	@include fz-xs;
+	display: block;
+	color: color(white);
+	position: absolute;
+	vertical-align: middle;
+	text-align: center;
+	background-color: color(red);
+	top: -(ms(-1));
+	right: -(ms(0));
+	padding: 0.3em 0.675em;
+	border-radius: 1em;
+}

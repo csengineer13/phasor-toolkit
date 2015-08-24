@@ -1,0 +1,30 @@
+.toggle-group {
+	@include clearfix;
+	display: table;
+}
+
+.toggle {
+	min-width: ms(7);
+	text-align: center;
+	padding: ms(0) ms(1);
+	border: 1px solid color(gray, 1);
+	cursor: pointer;
+	color: color(gray);
+	display: table-cell;
+	vertical-align: middle;
+
+	&--stretch {
+		width: 50%;
+	}
+
+	+ .toggle {
+		border-left: 0;
+	}
+
+	&.is-active {
+		color: color(white);
+		background-color: color(blue);
+		border-color: color(blue);
+		box-shadow: -1px 0 0 0 color(blue);
+	}
+}

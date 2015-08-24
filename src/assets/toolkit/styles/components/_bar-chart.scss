@@ -1,0 +1,53 @@
+.bar-chart {
+	position: relative;
+	margin-bottom: ms(2);
+	text-align: center;
+
+	@include breakpoint($bp-m) {
+		text-align: right;
+		margin-bottom: ms(-1);
+	}
+
+	&__column {
+		position: relative;
+		height: ms(7);
+		width: ms(8);
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+
+		@include breakpoint($bp-s) {
+			display: inline-block;
+		}
+
+		& + & {
+			@include breakpoint($bp-s) {
+				margin-left: ms(1);
+			}
+		}
+
+		&:after {
+			content: attr(data-label);
+			text-align: center;
+			width: 100%;
+			display: block;
+			position: absolute;
+			bottom: -2em;
+			color: color(gray);
+		}
+
+		> span {
+			background-color: color(gray, 1);
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+		}
+
+		&:first-child {
+			> span {
+				background-color: color(blue, 1);
+			}
+		}
+	}
+}

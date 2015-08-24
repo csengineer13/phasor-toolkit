@@ -1,0 +1,195 @@
+$border-radius: 3px;
+
+@mixin round-corners {
+	border-radius: $border-radius;
+}
+
+@mixin simple-text-input {
+	@include round-corners;
+	width: 100%;
+	background-color: color(white);
+	padding: 1.1em 1em 1em;
+	outline: 0;
+	text-align: left;
+	height: 47px;
+	border: 1px solid rgba(color(black), 0.1);
+	vertical-align: top;
+	-webkit-appearance: none;
+
+	@media (max-width: $bp-m - 0.1) {
+		font-size: 16px;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+@mixin caret-after($color: color(grey, 2), $display: inline-block, $right: ms(0)) {
+	display: $display;
+	position: relative;
+	padding-right: $right + ms(2);
+
+	&:after {
+		content: ' ';
+		width: 0;
+		height: 0;
+		position: absolute;
+		top: 50%;
+		top: calc(50% - #{ms(-4) / 2.1});
+		right: $right;
+		border-top: ms(-4) dashed $color;
+		border-right: ms(-4) solid transparent;
+		border-left: ms(-4) solid transparent;
+	}
+
+}
+
+@mixin speech-bubble-tail($include-border: false, $left: 34px) {
+	position: relative;
+
+	&:after {
+		content: ' ';
+		position: absolute;
+		border-style: solid;
+		border-width: 0 12px 12px;
+		border-color: color(white) transparent;
+		display: block;
+		width: 0;
+		z-index: 1;
+		top: -12px;
+		left: $left;
+	}
+
+	@if ($include-border) {
+		&:before {
+			content: ' ';
+			position: absolute;
+			border-style: solid;
+			border-width: 0 13px 13px;
+			border-color: color(gray, 1) transparent;
+			display: block;
+			width: 0;
+			top: -13px;
+			left: calc(#{$left} - 1px);
+		}
+	}
+}
+
+@mixin darken-overlay($end: 50%) {
+	position: relative;
+
+	&:before {
+		z-index: 0;
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: linear-gradient(bottom, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) $end);
+	}
+}
+
+.darken-overlay {
+	@include darken-overlay(50%);
+	position: relative;
+}
+
+
+@mixin pattern {
+	background-image: url('../images/pattern.jpg');
+}
+
+.pattern {
+	@include pattern;
+
+	&--fade {
+		position: relative;
+		background-repeat: repeat-x;
+
+		&:before {
+			content: ' ';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 30em;
+			left: 0;
+			top: 0;
+			background-image: linear-gradient(top, rgba(color(gray, 3), 0) 0%, rgba(color(gray, 3), 0) 20%,  rgba(color(gray, 3), 1) 100%);
+		}
+	}
+}
+
+@mixin shadowbox($x: 0, $y: 0) {
+	@include round-corners;
+	border: 1px solid rgba(color(gray, 1), 0.8);
+	box-shadow: $x $y 5px rgba(0,0,0, 0.1);
+}
+
+[data-toggle] {
+	cursor: pointer;
+}
+
+
+// home "lifestyle" photo containers
+.lifestyle-fade-top {
+	background-image: linear-gradient(top, transparent 0%, #f4f6f7 100%);
+}
+
+.lifestyle-large {
+	background-image: url('../images/lifestyle-large.jpg');
+	background-size: cover;
+	background-position: center bottom;
+	height: 0;
+	padding-bottom: 250%;
+
+	@include breakpoint($bp-s) {
+		padding-bottom: 130%;
+	}
+
+	@include breakpoint($bp-m) {
+		padding-bottom: percentage(1089/1440);
+	}
+
+	&__content {
+		max-width: $measure;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		margin-top: ms(7);
+		padding-left: ms(4);
+		padding-right: ms(4);
+		color: color(white);
+
+		@include breakpoint($bp-s) {
+			margin-top: ms(5);
+			padding-top: ms(1);
+		}
+
+		@include breakpoint($bp-m) {
+			max-width: 66em;
+			margin-top: ms(5);
+			padding-top: ms(3);
+		}
+
+		@include breakpoint($bp-l) {
+			margin-top: ms(7);
+		}
+
+		.lifestyle-quote {
+			font-size: (20/14) + em;
+
+			@include breakpoint($bp-m) {
+				font-size: (28/14) + em;
+			}
+		}
+	}
+}
+
+.elite-status {
+	width: 2.2em;
+	display: inline-block;
+	vertical-align: middle;
+}

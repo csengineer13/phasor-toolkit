@@ -1,0 +1,75 @@
+.notification {
+	background-color: color(gray, 2);
+	border: 1px solid color(gray, 1);
+	padding: ms(1);
+	text-align: center;
+	position: relative;
+
+	@include breakpoint($bp-m) {
+		@include clearfix;
+		text-align: left;
+	}
+
+	&__message {
+
+		@include breakpoint($bp-m) {
+			float: left;
+			width: percentage(6/12);
+		}
+
+		@include breakpoint($bp-l) {
+			float: left;
+			width: percentage(7/12);
+		}
+
+		p {
+			margin: ms(-4) auto;
+			color: color(black);
+			max-width: $measure;
+
+			@include breakpoint($bp-m) {
+				margin-left: 0;
+				max-width: 100%;
+			}
+		}
+	}
+
+	&__controls {
+
+		@include breakpoint($bp-m) {
+			float: right;
+		}
+
+		.button {
+			margin-top: ms(1);
+
+			@include breakpoint($bp-l) {
+				margin-top: ms(0);
+			}
+
+			& + .button {
+				@include breakpoint($bp-xs) {
+					margin-left: ms(0);
+				}
+			}
+		}
+
+		.icon {
+			cursor: pointer;
+			position: absolute;
+			top: ms(0);
+			right: ms(0);
+
+			@include breakpoint($bp-m) {
+				position: relative;
+				top: auto;
+				right: auto;
+				margin-left: ms(-2);
+			}
+
+			use {
+				fill: color(gray, 1);
+			}
+		}
+	}
+}

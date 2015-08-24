@@ -1,0 +1,29 @@
+.lockup {
+	width: 9em;
+
+	@include breakpoint($bp-m) {
+		width: ms(9);
+	}
+
+	@include breakpoint($bp-xl) {
+		width: 15em;
+	}
+
+	a {
+		@include ir;
+		display: block;
+		height: 0;
+		padding-bottom: percentage(81/480);
+		background-position: center top;
+		background-size: 100%;
+		background-repeat: no-repeat;
+
+		.header--dark & {
+			background-position: center bottom;
+		}
+
+		.is-open.header--dark & {
+			background-position: center top;
+		}
+	}
+}

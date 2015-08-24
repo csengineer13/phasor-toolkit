@@ -1,0 +1,66 @@
+.review {
+	margin: ms(4) 0 ms(2);
+	position: relative;
+	border-bottom: 1px solid color(gray, 2);
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	&__title {
+		@include fz-xl;
+	}
+
+	&__meta {
+		margin-top: ms(-4);
+	}
+
+	&__value {
+		margin-top: ms(1);
+
+		@include breakpoint($bp-l) {
+			margin-top: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+		}
+
+		> span {
+			font-size: ms(1);
+			display: inline-block;
+			vertical-align: middle;
+			margin-top: ms(-6);
+			margin-left: ms(-4);
+		}
+	}
+
+	&__body {
+		max-width: ms(14);
+
+		p:last-of-type {
+			margin-bottom: ms(-4);
+		}
+	}
+
+	&__response {
+		margin-top: ms(2);
+		padding: ms(3);
+		background-color: color(gray, 3);
+		border-top: 1px solid color(gray, 2);
+
+		p:last-of-type {
+			margin-bottom: ms(-4);
+		}
+	}
+}
+
+.review-form {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 100%;
+	background-color: color(white);
+	padding: ms(5) 0 0;
+	display: none;
+}

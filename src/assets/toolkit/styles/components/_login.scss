@@ -1,0 +1,23 @@
+.login {
+	@include outer-container;
+	background-color: rgba(color(brown), 0.8);
+	padding: ms(0);
+
+	@include breakpoint($bp-m) {
+		padding: ms(3);
+	}
+
+	&.pull-up {
+		position: relative;
+		top: -(ms(5));
+	}
+
+	> [class*='col-']:not(:last-child) {
+		margin-bottom: ms(0);
+
+		@include breakpoint($bp-m) {
+			margin-bottom: 0;
+			padding-right: ms(1);
+		}
+	}
+}

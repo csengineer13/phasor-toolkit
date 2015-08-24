@@ -1,0 +1,23 @@
+url:
+#  home: "/a-foundation/home.html"
+#  dashboard: "/a-foundation/home.html"
+
+footer:
+  links:
+    Navigate:
+      - Link 1
+      - Link 2
+      - Link 3
+      - Link 4
+    Help:
+      - Contact Us
+      - FAQ
+    About Us:
+      - About Us
+      - Careers
+      - Privacy Policy
+      - Terms of use
+    Social:
+      - Twitter
+      - Facebook
+      - Instagram

@@ -1,0 +1,16 @@
+@mixin svg-fill($color) {
+	use {
+		fill: $color !important;
+	}
+}
+
+@each $color, $tones in $colors {
+	@each $tone, $fill in $tones {
+
+		$className: if($tone == 0, #{$color}, #{$color}#{$tone});
+
+		.icon--#{$className} {
+			@include svg-fill($fill);
+		}
+	}
+}

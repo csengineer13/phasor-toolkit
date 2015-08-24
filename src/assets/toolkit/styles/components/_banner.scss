@@ -1,0 +1,44 @@
+.banner {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+
+	&__inner {
+		@include darken-overlay(50%);
+		position: relative;
+		color: color(white);
+		text-align: center;
+		padding-left: ms(0);
+		padding-right: ms(0);
+		padding-top: ms(5);
+		padding-bottom: ms(2);
+	}
+
+	&__lead {
+		@include sans-alt;
+		@include fz-xl;
+		@include z-1;
+		position: relative;
+		font-weight: 200;
+	}
+
+	&__heading {
+		@include sans-alt;
+		@include z-1;
+		position: relative;
+		font-size: ms(3);
+		font-weight: 700;
+		margin-top: ms(-5);
+		margin-bottom: ms(0);
+	}
+
+	a {
+		@include z-1;
+		position: relative;
+
+		&,
+		&:visited {
+			color: color(white);
+		}
+	}
+}

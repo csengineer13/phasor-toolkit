@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>{{title}}</title>
+
+	{{#if fabricator}}<link rel="stylesheet" href="assets/fabricator/styles/f.css">{{/if}}
+
+	<!-- toolkit styles -->
+	<link rel="stylesheet" href="{{baseurl}}/assets/toolkit/styles/toolkit.css">
+	<!-- /toolkit styles -->
+
+</head>
+<body>
+
+	{{#if fabricator}}
+		{{> f-icons}}
+		{{> f-menu}}
+		<div class="f-container">
+			<div class="maw-n ml-a mr-a">
+			{{> f-control-bar}}
+	{{/if}}
+
+	<div class="container">
+		{% body %}
+	</div>
+
+
+	{{#if fabricator}}
+			</div>
+		</div>
+	<script src="assets/fabricator/scripts/f.js"></script>
+	{{/if}}
+
+	<!-- toolkit scripts -->
+	<script src="{{baseurl}}/assets/toolkit/scripts/toolkit.js"></script>
+	<!-- /toolkit scripts -->
+
+</body>
+</html>

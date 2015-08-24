@@ -1,0 +1,355 @@
+.datepicker {
+
+	$daySize: 3em;
+
+	@include round-corners;
+	@include z-10;
+	padding: ms(1) ms(-2);
+	display: block;
+	background-color: color(white);
+	text-align: center;
+	width: 22em;
+	position: fixed;
+	left: calc(50% - 11em);
+	top: 50%;
+	transform: translate3d(0, -50%, 0);
+	box-shadow: 0 0 0 50vh rgba(0, 0, 0, 0.4);
+
+	@include breakpoint($bp-m) {
+		@include shadowbox;
+		display: inline-block;
+		padding: ms(2) ms(1) ms(1);
+		position: absolute;
+		width: 46.25em;
+		left: 0;
+		top: calc(100% + #{ms(-4)});
+		transform: none;
+	}
+
+	.dropdown {
+		@include z-3;
+		margin-bottom: ms(2);
+	}
+
+	&__arrows {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		padding: 0 ms(1);
+
+		svg {
+			cursor: pointer;
+
+			&:first-child {
+				float: left;
+			}
+
+			&:last-child {
+				float: right;
+			}
+
+			&:active {
+				margin-top: 1px;
+			}
+
+			&:hover {
+				use {
+					fill: color(gray);
+				}
+			}
+
+			use {
+				fill: color(gray, 5);
+			}
+		}
+	}
+
+	&__month {
+		display: inline-block;
+		overflow: hidden;
+		padding-left: 1px;
+
+		& + & {
+			margin-left: ms(0);
+
+			// TODO demo code; remove later
+			display: none;
+
+			@include breakpoint($bp-m) {
+				display: inline-block;
+			}
+		}
+	}
+
+	&__month-header {
+		text-align: center;
+		font-weight: 700;
+		padding-bottom: ms(-2);
+	}
+
+	&__month-weekdays {
+		@include clearfix;
+
+		&-weekday {
+			@include sans-alt;
+			float: left;
+			width: $daySize;
+			height: $daySize;
+			text-transform: uppercase;
+			text-align: center;
+			padding-bottom: ms(-2);
+			position: relative;
+			margin-left: -1px;
+
+			> span {
+				font-size: ms(-1);
+				color: color(grey);
+				position: absolute;
+				bottom: ms(-2);
+				left: 0;
+				width: 100%;
+				text-align: center;
+			}
+		}
+	}
+
+	&__week {
+		@include clearfix;
+		height: $daySize;
+		margin-bottom: -1px;
+
+		&-days {
+			@include clearfix;
+			float: left;
+			width: 100%;
+		}
+	}
+
+	&__day {
+		@include sans-alt;
+		float: left;
+		width: $daySize;
+		height: $daySize;
+		text-align: center;
+		border: 1px solid color(white);
+		vertical-align: middle;
+		font-weight: 700;
+		cursor: pointer;
+		margin-left: -1px;
+		margin-top: -1px;
+		padding-top: $daySize / 4;
+		overflow: hidden;
+
+		> span {
+			display: inline-block;
+			margin-top: $daySize - ($daySize * .99);
+		}
+
+		&:hover {
+			@include z-2;
+			background-color: color(green, 1);
+			color: color(white);
+			position: relative;
+		}
+
+		&--available {
+			@include z-1;
+			background-color: color(green, 1);
+			color: color(white);
+			position: relative;
+
+			&:hover {
+				background-color: darken(color(green, 1), 10%);
+			}
+		}
+
+		&--checkoutonly {
+			@include z-1;
+			background-color: lighten(color(green, 1), 15%);
+			color: color(white);
+			position: relative;
+
+			&:hover {
+				background-color: darken(color(green, 1), 10%);
+			}
+		}
+
+		&--selected{
+				color: color(white);
+				background-color: darken(color(green, 1), 20%);
+		}
+
+		&--selected{
+				&:hover {
+					color: color(white);
+					background-color: darken(color(green, 1), 20%);
+				}
+		}
+
+		&--unavailable {
+			background-color: color(grey, 4);
+			color: color(grey, 1);
+
+			&:hover {
+			background-color: color(grey, 4);
+			color: color(gray, 1);
+			}
+		}
+
+		&--expired {
+			color: color(grey, 1);
+			background-color: color(white);
+			&:hover {
+				color: color(grey, 1);
+				background-color: color(white);
+			}
+		}
+		&--placeholder {
+			color: color(white);
+			background-color: color(white);
+			&:hover {
+				color: color(white);
+				background-color: color(white);
+			}
+		}
+	}
+
+	&__bottom {
+		text-align: left;
+		margin-top: ms(0);
+	}
+
+	&__key {
+		@include fz-s;
+		padding-left: 2em;
+		color: color(gray, 5);
+		text-transform: uppercase;
+		display: inline-block;
+		position: relative;
+
+		& + & {
+			margin-left: ms(0);
+		}
+
+		&:before {
+			content: ' ';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: ms(1);
+			height: ms(1);
+			background-color: color(gray, 3);
+		}
+
+		&--available {
+			&:before {
+				background-color: color(green, 1);
+			}
+		}
+
+		&--unavailable {
+			&:before {
+				border: 1px solid color(gray, 1);
+			}
+		}
+	}
+}
+
+.date-range-picker {
+	@include clearfix;
+	position: relative;
+
+	.datepicker {
+		display: none;
+
+		@include breakpoint($bp-m) {
+			.booking-tile & {
+				position: fixed;
+				left: calc(50% - 22.5em);
+				top: 50%;
+				transform: translateY(-50%);
+				box-shadow: 0 0 0 50vh rgba(0, 0, 0, 0.4);
+			}
+		}
+
+		@include breakpoint($bp-l) {
+			left: calc(50% - #{(ms(11) * 2.06) / 2});
+
+			.booking-tile & {
+				left: auto;
+				right: 0;
+				top: calc(100% + #{ms(-4)});
+				transform: none;
+				position: absolute;
+				box-shadow: none;
+			}
+		}
+
+		&.is-active {
+			display: block;
+		}
+	}
+
+	&__input {
+		@include clearfix;
+		width: 50%;
+		float: left;
+		position: relative;
+
+		input {
+			@include simple-text-input;
+			padding-left: 2.2em;
+
+			@include breakpoint($bp-m) {
+				padding-left: 3em;
+			}
+		}
+
+		&:first-child {
+			input {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+
+		&:nth-child(2) {
+			input {
+				border-top-left-radius: 0;
+				border-bottom-left-radius: 0;
+				border-left: 0;
+			}
+		}
+
+		.icon {
+			@include icon(ms(1));
+			position: absolute;
+			left: ms(-2);
+			top: calc(50% + 1px);
+			transform: translateY(-50%);
+
+			@include breakpoint($bp-m) {
+				top: 50%;
+			}
+
+			use {
+				fill: color(grey, 5);
+			}
+		}
+	}
+}
+
+.is-datepicking {
+
+	.container {
+		overflow: hidden;
+		position: fixed;
+
+		@include breakpoint($bp-l) {
+			overflow: visible;
+		}
+	}
+
+	.main {
+		@include z-9;
+	}
+}

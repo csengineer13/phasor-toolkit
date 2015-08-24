@@ -1,0 +1,51 @@
+.pagination {
+	@include clearfix;
+	padding-left: 0;
+	margin: 0;
+	list-style-type: none;
+	display: inline-block;
+	margin-left: 1px;
+
+	li {
+		display: block;
+		float: left;
+		margin-bottom: 0;
+
+		&:first-child {
+			a {
+				border-top-left-radius: 3px;
+				border-bottom-left-radius: 3px;
+			}
+		}
+
+		&:last-child {
+			a {
+				border-top-right-radius: 3px;
+				border-bottom-right-radius: 3px;
+			}
+		}
+
+		&.is-active > a {
+			text-decoration: none;
+			background-color: color(green, 1);
+			color: color(white);
+		}
+
+		a {
+			display: block;
+			float: left;
+			padding: ms(-2) ms(0);
+			background-color: color(white);
+			border: 1px solid color(grey, 2);
+			margin-left: -1px;
+			color: color(grey);
+			font-weight: 700;
+
+			&:hover {
+				text-decoration: none;
+				background-color: color(green, 1);
+				color: color(white);
+			}
+		}
+	}
+}
